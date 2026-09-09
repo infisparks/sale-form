@@ -61,10 +61,10 @@
       background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
     }
     .slot-pill.active {
-      background: #1D4ED8;
+      background: #4F46E5;
       color: #ffffff;
-      border-color: #1E40AF;
-      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
+      border-color: #4338CA;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
     }
     .date-btn.active {
       background: #0B1727;
@@ -77,33 +77,34 @@
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Button Shimmer Shine Effect */
+    @keyframes btn-shine {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      25%, 100% { transform: translateX(250%) skewX(-20deg); }
+    }
+    .shine-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .shine-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      bottom: -50%;
+      left: 0;
+      width: 50%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.38), transparent);
+      transform: translateX(-150%) skewX(-20deg);
+      animation: btn-shine 3s infinite ease-in-out;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-brand-600 selection:text-white">
 
-  <!-- Clean Executive Top Bar: 1 Single Button -->
-  <header class="w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-900 via-brand-800 to-brand-600 flex items-center justify-center text-white font-black text-xs shadow-sm ring-1 ring-white/20">
-          FO
-        </div>
-        <div class="leading-tight">
-          <span class="font-black text-sm sm:text-base tracking-tight text-brand-950">FIRST OPTION</span>
-          <span class="text-[9px] font-bold text-brand-600 block uppercase tracking-widest">Hiring Closers</span>
-        </div>
-      </div>
-
-      <!-- Single Primary Action Button on Top -->
-      <button onclick="openHiringModal()" class="px-4 py-1.5 sm:px-5 sm:py-2 bg-brand-600 hover:bg-brand-700 text-white text-[11px] sm:text-xs font-black rounded-lg shadow-sm shadow-brand-600/20 transition active:scale-95 flex items-center gap-2 border border-brand-500/40">
-        <span>Apply Now</span>
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Hero Section: Perfectly Balanced for Mobile Screen Height with Executive Contrast & Rich Background -->
-  <section class="relative min-h-[calc(100dvh-3.5rem)] sm:min-h-0 flex flex-col justify-evenly sm:justify-center py-2 sm:py-16 md:py-20 overflow-hidden luxury-tech-bg">
+  <!-- Hero Section: Balanced for Full Mobile Screen Height with Executive Solid Typography & Shimmer CTA -->
+  <section class="relative min-h-[100dvh] sm:min-h-0 flex flex-col justify-evenly sm:justify-center py-4 sm:py-16 md:py-20 overflow-hidden luxury-tech-bg">
     <!-- Ambient Blue & Indigo Depth Glows -->
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[650px] h-60 sm:h-[380px] bg-gradient-to-tr from-brand-300/30 to-indigo-300/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
@@ -113,16 +114,16 @@
       <div class="my-0.5 sm:mb-3">
         <div class="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-indigo-200/80 px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-extrabold text-slate-800 shadow-sm">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-          <span class="text-brand-700 font-black">Inbound Pipeline Live</span>
+          <span class="text-indigo-600 font-black">Inbound Pipeline Live</span>
           <span class="text-slate-300">|</span>
           <span class="text-slate-600">0% Cold Calling</span>
         </div>
       </div>
 
-      <!-- Bigger, High-Impact Magnetic Headline -->
-      <h1 class="text-2xl min-[380px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-brand-950 tracking-tight leading-[1.15] sm:leading-tight max-w-3xl my-1 sm:my-2">
+      <!-- Bigger, High-Impact Magnetic Headline (Solid High-Contrast Text) -->
+      <h1 class="text-2xl min-[380px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.15] sm:leading-tight max-w-3xl my-1 sm:my-2">
         Stop Dialing Cold Leads. <br class="hidden sm:inline" />
-        Close <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-indigo-600 to-brand-900">Pre-Qualified Founders</span>.
+        Close <span class="text-indigo-600">Pre-Qualified Founders</span>.
       </h1>
       
       <!-- Prominent Subheadline -->
@@ -132,7 +133,7 @@
 
       <!-- Centered Hero Image Preview with Luxury Glass Frame -->
       <div class="w-full max-w-sm sm:max-w-lg md:max-w-xl my-1.5 sm:my-4">
-        <div onclick="openHiringModal()" class="group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-indigo-200/90 shadow-2xl bg-white/90 backdrop-blur-md p-1.5 sm:p-2.5 cursor-pointer transition-all duration-300 hover:scale-[1.01] hover:border-brand-500 hover:shadow-glow ring-1 ring-brand-500/10">
+        <div onclick="openHiringModal()" class="group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-indigo-200/90 shadow-2xl bg-white/90 backdrop-blur-md p-1.5 sm:p-2.5 cursor-pointer transition-all duration-300 hover:scale-[1.01] hover:border-indigo-500 hover:shadow-glow ring-1 ring-indigo-500/10">
           <div class="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center">
             <img 
               src="https://firstoptionagency.in/hero.png" 
@@ -141,7 +142,7 @@
               loading="eager"
             />
             <!-- Live Status Overlay Tag -->
-            <div class="absolute top-2 right-2 flex items-center gap-1.5 bg-brand-950/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15 text-[9px] sm:text-[11px] font-bold text-white shadow-md">
+            <div class="absolute top-2 right-2 flex items-center gap-1.5 bg-slate-950/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15 text-[9px] sm:text-[11px] font-bold text-white shadow-md">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>Live Inbound Flow</span>
             </div>
@@ -149,14 +150,14 @@
         </div>
       </div>
 
-      <!-- Action Area: Bigger Apply Button -->
+      <!-- Action Area: 1 Solid Color Button with Smooth Shine Effect -->
       <div class="w-full max-w-xs sm:max-w-sm space-y-1 sm:space-y-1.5 my-1 sm:my-2">
-        <button onclick="openHiringModal()" class="w-full py-3 sm:py-3.5 px-6 bg-gradient-to-r from-brand-600 via-indigo-600 to-brand-700 hover:from-brand-700 hover:to-indigo-800 text-white font-black text-xs sm:text-sm rounded-xl sm:rounded-2xl shadow-lg shadow-brand-600/30 transition transform active:scale-95 flex items-center justify-center gap-2 border border-white/20">
+        <button onclick="openHiringModal()" class="shine-btn w-full py-3.5 sm:py-4 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs sm:text-sm rounded-xl sm:rounded-2xl shadow-lg shadow-indigo-600/25 transition transform active:scale-95 flex items-center justify-center gap-2 border border-indigo-500/40">
           <span>Apply in 3 Steps (Pick Calendar Slot)</span>
           <span class="text-sm font-black">&rarr;</span>
         </button>
 
-        <a href="#pipeline" class="block text-[10px] sm:text-xs font-bold text-slate-500 hover:text-brand-600 transition">
+        <a href="#pipeline" class="block text-[10px] sm:text-xs font-bold text-slate-500 hover:text-indigo-600 transition">
           View Pipeline Breakdown &darr;
         </a>
       </div>
@@ -164,15 +165,15 @@
       <!-- 3 Small Compact Badges for Mobile -->
       <div class="my-1 sm:mt-3 grid grid-cols-3 gap-1.5 sm:gap-4 max-w-xs sm:max-w-md w-full text-center">
         <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 p-1.5 sm:p-2.5 rounded-xl sm:rounded-2xl shadow-sharp">
-          <span class="block font-black text-brand-950 text-xs sm:text-sm">₹40k</span>
+          <span class="block font-black text-slate-950 text-xs sm:text-sm">₹40k</span>
           <span class="text-[9px] sm:text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Fixed Base</span>
         </div>
         <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 p-1.5 sm:p-2.5 rounded-xl sm:rounded-2xl shadow-sharp">
-          <span class="block font-black text-brand-950 text-xs sm:text-sm">15%</span>
+          <span class="block font-black text-slate-950 text-xs sm:text-sm">15%</span>
           <span class="text-[9px] sm:text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Uncapped Cut</span>
         </div>
         <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 p-1.5 sm:p-2.5 rounded-xl sm:rounded-2xl shadow-sharp">
-          <span class="block font-black text-brand-950 text-xs sm:text-sm">100%</span>
+          <span class="block font-black text-slate-950 text-xs sm:text-sm">100%</span>
           <span class="text-[9px] sm:text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Inbound Calls</span>
         </div>
       </div>
@@ -561,44 +562,21 @@
         <!-- STAGE 1: CANDIDATE IDENTITY -->
         <div id="stage1View" class="space-y-4">
           <div>
-            <h4 class="text-sm font-extrabold text-slate-900">Step 1 of 3: Your Contact & Role</h4>
-            <p class="text-xs text-slate-500">Provide your official WhatsApp number so we can confirm interview details.</p>
+            <h4 class="text-sm font-extrabold text-slate-900">Step 1 of 3: Your Contact Details</h4>
+            <p class="text-xs text-slate-500">Provide your name and WhatsApp number so we can confirm interview details.</p>
           </div>
 
           <div class="space-y-3.5">
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1" for="cName">Your Full Legal Name *</label>
+              <label class="block text-xs font-bold text-slate-700 mb-1" for="cName">Your Full Name *</label>
               <input type="text" id="cName" placeholder="e.g. Rahul Verma" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-100 text-xs font-medium" />
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1" for="cPhone">WhatsApp Mobile Number *</label>
-                <div class="relative">
-                  <span class="absolute left-3 top-2.5 text-xs font-bold text-slate-400">+91</span>
-                  <input type="tel" id="cPhone" placeholder="98765 43210" class="w-full pl-11 pr-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-100 text-xs font-medium" />
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1" for="cEmail">Email Address *</label>
-                <input type="email" id="cEmail" placeholder="rahul@domain.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-100 text-xs font-medium" />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1" for="cCity">Current City / Location *</label>
-                <input type="text" id="cCity" placeholder="e.g. Mumbai / Bangalore / Pune" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-100 text-xs font-medium" />
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1" for="cRole">Role Applying For</label>
-                <select id="cRole" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-100 text-xs font-medium bg-white">
-                  <option value="Inbound High-Ticket Closer">Inbound High-Ticket Closer</option>
-                  <option value="Healthcare Funnel Consultant">Healthcare Funnel Consultant</option>
-                  <option value="B2B Growth Strategist">B2B Growth Strategist</option>
-                </select>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1" for="cPhone">WhatsApp Mobile Number *</label>
+              <div class="relative">
+                <span class="absolute left-3 top-2.5 text-xs font-bold text-slate-400">+91</span>
+                <input type="tel" id="cPhone" placeholder="98765 43210" class="w-full pl-11 pr-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-100 text-xs font-medium" />
               </div>
             </div>
           </div>
@@ -783,7 +761,7 @@
             <button type="button" onclick="showStage2()" class="text-xs font-bold text-slate-500 hover:text-slate-800">
               &larr; Back
             </button>
-            <button type="button" id="confirmBtn" onclick="finalizeBooking()" class="px-7 py-3 bg-gradient-to-r from-brand-600 via-brand-700 to-brand-800 hover:from-brand-700 hover:to-brand-900 text-white font-black text-xs rounded-xl shadow-lg shadow-brand-600/30 transition flex items-center gap-2">
+            <button type="button" id="confirmBtn" onclick="finalizeBooking()" class="shine-btn px-7 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center gap-2 border border-indigo-500/30">
               <span>Lock My Interview Slot</span>
               <span>&check;</span>
             </button>
@@ -859,9 +837,8 @@
     }
 
     function openHiringModalWithRole(roleTitle) {
+      if (roleTitle) candidateData.role = roleTitle;
       openHiringModal();
-      const sel = document.getElementById('cRole');
-      if (sel) sel.value = roleTitle;
     }
 
     function closeHiringModal() {
@@ -923,20 +900,12 @@
       hideAlert();
       const n = document.getElementById('cName').value.trim();
       const p = document.getElementById('cPhone').value.trim();
-      const e = document.getElementById('cEmail').value.trim();
-      const c = document.getElementById('cCity').value.trim();
-      const r = document.getElementById('cRole').value;
 
       if (!n) return showAlert('Please enter your full name.');
       if (!p || p.length < 8) return showAlert('Please enter a valid 10-digit WhatsApp number.');
-      if (!e || !e.includes('@')) return showAlert('Please enter a valid email address.');
-      if (!c) return showAlert('Please enter your current city.');
 
       candidateData.name = n;
       candidateData.phone = p;
-      candidateData.email = e;
-      candidateData.city = c;
-      candidateData.role = r;
 
       document.getElementById('stage1View').classList.add('hidden');
       document.getElementById('stage2View').classList.remove('hidden');
